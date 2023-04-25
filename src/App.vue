@@ -69,23 +69,26 @@ const onSelect = (rowsIndex: number, colsIndex: number) => {
  * 勝者のIDを取得
  */
 const getWinnerId = () => {
+  let arrayIndex: number = 0
   // 縦3、横3のいずれかが同じIDになっているか
   const result = states.value.find((row: Array<number>, index: number) => {
     // 横判定
     if (isStatesFilled(row)) {
+      arrayIndex = index
       return row[0]
     }
 
     // 縦判定
     const col = [states.value[0][index], states.value[1][index], states.value[2][index]]
     if (isStatesFilled(col)) {
+      arrayIndex = index
       return states.value[0][index]
     }
   })
 
   // 縦 or 横判定結果
   if (result) {
-    return result[0]
+    return result[arrayIndex]
   }
 
   // 斜め2（対角線）のいずれかが同じIDになっているか
