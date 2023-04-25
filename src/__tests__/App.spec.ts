@@ -30,10 +30,43 @@ describe('App.vue', () => {
     expect(wrapper.vm.playerId).toEqual(2)
   })
 
-  it('勝敗を判定する', () => {
+  it('横ラインの勝敗を判定する', () => {
+    const wrapper = shallowMount(App)
+    wrapper.vm.states = [
+      [2, -1, 2],
+      [-1, 2, 2],
+      [1, 1, 1]
+    ]
+    const winnerId = wrapper.vm.getWinnerId()
+    expect(winnerId).toEqual(1)
+  })
+
+  it('縦ラインの勝敗を判定する', () => {
+    const wrapper = shallowMount(App)
+    wrapper.vm.states = [
+      [2, 1, 2],
+      [-1, 1, 1],
+      [2, 1, 2]
+    ]
+    const winnerId = wrapper.vm.getWinnerId()
+    expect(winnerId).toEqual(1)
+  })
+
+  it('斜め1ラインの勝敗を判定する', () => {
     const wrapper = shallowMount(App)
     wrapper.vm.states = [
       [1, 1, 2],
+      [-1, 2, 1],
+      [2, -1, 2]
+    ]
+    const winnerId = wrapper.vm.getWinnerId()
+    expect(winnerId).toEqual(2)
+  })
+
+  it('斜め2ラインの勝敗を判定する', () => {
+    const wrapper = shallowMount(App)
+    wrapper.vm.states = [
+      [2, 1, 1],
       [-1, 2, 1],
       [2, -1, 2]
     ]
