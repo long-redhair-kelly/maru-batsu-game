@@ -4,6 +4,7 @@ import App from '../App.vue'
 
 describe('App.vue', () => {
   it('App スナップショット', () => {
+    const wrapper = shallowMount(App)
     expect(wrapper).toMatchSnapshot()
   })
   it('コンポーネントを描画できる', () => {
