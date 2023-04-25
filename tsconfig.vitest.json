@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.app.json",
+  "exclude": [],
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "es2015",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false,
+    "ignoreDeprecations": "5.0",
+    "moduleResolution": "node",
+    "lib": ["dom", "es2015"],
+    "typeRoots": ["node_modules/@types"],
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true
+  }
+}

@@ -1,0 +1,24 @@
+#table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 3px solid #ccc;
+  margin-bottom: 20px;
+}
+
+#table td {
+  border: 1px solid #ccc;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.player1 {
+  color: red;
+}
+
+.player2 {
+  color: blue;
+}
