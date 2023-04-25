@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { mount, createLocalVue } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils'
 
 import RoundRobin from '../RoundRobin.vue'
 
@@ -9,25 +9,6 @@ describe('RoundRobin', () => {
     [2, 1, 1],
     [0, 2, 0]
   ]
-
-  let wrapper
-
-  beforeEach(() => {
-    const localVue = createLocalVue() // ローカルの Vue インスタンスを作成する
-    localVue.config.globalProperties.$emit = jest.fn() // ローカルの Vue インスタンスに $emit を設定する
-
-    wrapper = mount(RoundRobin, {
-      props: {
-        states
-      },
-      attachTo: document.body,
-      localVue // localVue を使うように修正
-    })
-  })
-
-  afterEach(() => {
-    wrapper.unmount()
-  })
 
   it('各マスが期待どおりの状態で描画されていること', () => {
     const wrapper = mount(RoundRobin, {
@@ -59,6 +40,11 @@ describe('RoundRobin', () => {
   it('セルをクリックすると、onSelectイベントが発生すること', async () => {
     const rowIndex = 1
     const colIndex = 2
+    const wrapper = mount(RoundRobin, {
+      props: {
+        states
+      }
+    })
 
     await wrapper
       .find(`#table tr:nth-child(${rowIndex + 1}) td:nth-child(${colIndex + 1})`)
